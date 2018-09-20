@@ -9,7 +9,7 @@ endif
 " ================ General Config ====================
 
 execute pathogen#infect()
-set relativenumber                      "Line numbers are good
+set number relativenumber                      "Line numbers are good
 set backspace=indent,eol,start  "Allow backspace in insert mode
 set history=1000                "Store lots of :cmdline history
 set showcmd                     "Show incomplete cmds down the bottom
@@ -69,7 +69,6 @@ set smartcase       " ...unless we type a capital
 
 " ================ Indentation ======================
 
-set autoindent
 set smartindent
 set smarttab
 set shiftwidth=2
@@ -86,7 +85,9 @@ set runtimepath^=~/.vim/bundle/ctrlp.vim
 
 " NERD Tree auto start
 "autocmd vimenter * NERDTree
-map <F3> :NERDTreeToggle<CR>
+nmap ,n :NERDTreeFind<CR>
+nmap ,m :NERDTreeToggle<CR>
+
 set runtimepath^=~/.vim/bundle/ag
 
 " =============== Solarized (COLORS!) =================
@@ -96,3 +97,21 @@ colorscheme solarized
 let g:solarized_base16 = 1
 "============== EasyMotion ======================
 nmap f <Plug>(easymotion-overwin-w)
+
+"=============Syntastic====================
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+au BufRead,BufNewFile *.vue set ft=html
+
+"============Added this to help someone on their homework==============
+nnoremap <buffer> <F9> :exec '!python' shellescape(@%, 1)<cr>
+let g:pymode_python = 'python3'
+
+"=============Press <F2> if you paste stuff and it looks like garbage============
+set pastetoggle=<F2>
