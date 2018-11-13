@@ -138,3 +138,8 @@ alias gc='git commit --verbose'
 alias la='ls -la'
 alias s='git status'
 alias push='git push origin'
+
+#We edit in vim, any questions?
+export VISUAL=vim
+export EDITOR="$VISUAL"
+export BUNDLER_EDITOR="$VISUAL"

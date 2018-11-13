@@ -109,9 +109,9 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 au BufRead,BufNewFile *.vue set ft=html
 
-"============Added this to help someone on their homework==============
-nnoremap <buffer> <F9> :exec '!python' shellescape(@%, 1)<cr>
-let g:pymode_python = 'python3'
+"==============Dispatch================
+nnoremap <F9> :Dispatch<CR>
 
 "=============Press <F2> if you paste stuff and it looks like garbage============
 set pastetoggle=<F2>
+
