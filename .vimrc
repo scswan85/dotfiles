@@ -18,6 +18,7 @@ set gcr=a:blinkon0              "Disable cursor blink
 set visualbell                  "No sounds
 set autoread                    "Reload files changed outside vim
 set lazyredraw                  "make stuff scroll faster!
+set spell spelllang=en       "Spellcheck
 
 " This makes vim act like all other editors, buffers can
 " exist in the background without being in a window.
@@ -91,7 +92,10 @@ nmap ,m :NERDTreeToggle<CR>
 set runtimepath^=~/.vim/bundle/ag
 
 " =============== Solarized (COLORS!) =================
-syntax enable
+syntax on
+filetype plugin indent on
+filetype on
+filetype indent on
 set background=dark
 colorscheme solarized
 let g:solarized_base16 = 1
