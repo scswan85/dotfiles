@@ -128,10 +128,6 @@ if ! shopt -oq posix; then
   fi
 fi
 
-## rvm
-PATH="$GEM_HOME/bin:$HOME/.rvm/bin:$PATH" # Add RVM to PATH for scripting
-[ -s ${HOME}/.rvm/scripts/rvm ] && source ${HOME}/.rvm/scripts/rvm
-
 # some git aliases
 alias gaa='git add --all'
 alias gc='git commit --verbose'
@@ -143,3 +139,6 @@ alias push='git push origin'
 export VISUAL=vim
 export EDITOR="$VISUAL"
 export BUNDLER_EDITOR="$VISUAL"
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
+export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
