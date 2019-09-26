@@ -70,12 +70,9 @@ set smartcase       " ...unless we type a capital
 
 " ================ Indentation ======================
 
+filetype plugin indent on
 set smartindent
-set smarttab
-set shiftwidth=2
-set softtabstop=2
-set tabstop=2
-set expandtab
+set tabstop=2 shiftwidth=2 expandtab
 
 " ================ Packages =========================
 let g:rubycomplete_buffer_loading = 1
@@ -83,6 +80,10 @@ let g:rubycomplete_rails = 1
 
 " Get Ctrl-P working
 set runtimepath^=~/.vim/bundle/ctrlp.vim
+let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
+if executable('ag')
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+endif
 
 " NERD Tree auto start
 "autocmd vimenter * NERDTree
@@ -93,7 +94,6 @@ set runtimepath^=~/.vim/bundle/ag
 
 " =============== Solarized (COLORS!) =================
 syntax on
-filetype plugin indent on
 filetype on
 filetype indent on
 set background=dark
