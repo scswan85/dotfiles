@@ -1,23 +1,24 @@
 " This must be first, because it changes other options as a side effect.
 set nocompatible
+set nocursorline
+set lazyredraw                  "make stuff scroll faster!
+set t_Co=256
 
 " source ~/.vimrc.before if it exists.
-if filereadable(expand("~/.vimrc.before"))
-source ~/.vimrc.before
-endif
+"if filereadable(expand("~/.vimrc.before"))
+"source ~/.vimrc.before
+"endif
 
 " ================ General Config ====================
 
 execute pathogen#infect()
-set number relativenumber                      "Line numbers are good
+set number "Line numbers are good
 set backspace=indent,eol,start  "Allow backspace in insert mode
-set history=1000                "Store lots of :cmdline history
 set showcmd                     "Show incomplete cmds down the bottom
 set showmode                    "Show current mode down the bottom
 set gcr=a:blinkon0              "Disable cursor blink
 set visualbell                  "No sounds
 set autoread                    "Reload files changed outside vim
-set lazyredraw                  "make stuff scroll faster!
 set spell spelllang=en       "Spellcheck
 
 " This makes vim act like all other editors, buffers can
@@ -84,6 +85,18 @@ let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
 if executable('ag')
   let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 endif
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/vendor/*,*/\.git/*,*/node_modules/*
+let g:ctrlp_custom_ignore = 'tmp$\|\.git$\|\.hg$\|\.svn$\|.rvm$|.bundle$\|vendor'
+let g:ctrlp_working_path_mode = 0
+let g:ctrlp_match_window_bottom=1
+let g:ctrlp_max_height=25
+let g:ctrlp_match_window_reversed=0
+let g:ctrlp_mruf_max=500
+let g:ctrlp_follow_symlinks=1
+let g:ctrlp_clear_cache_on_exit=0
+
+" Don't highlight matches when starting Vim
+let g:matchup_matchparen_enabled = 1
 
 " NERD Tree auto start
 "autocmd vimenter * NERDTree
@@ -98,7 +111,6 @@ filetype on
 filetype indent on
 set background=dark
 colorscheme solarized
-let g:solarized_base16 = 1
 "============== EasyMotion ======================
 nmap f <Plug>(easymotion-overwin-w)
 
@@ -113,9 +125,18 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 au BufRead,BufNewFile *.vue set ft=html
 
-"==============Dispatch================
-nnoremap <F9> :Dispatch<CR>
-
 "=============Press <F2> if you paste stuff and it looks like garbage============
 set pastetoggle=<F2>
 
+"Ctrl mappings" work well when Caps Lock is mapped to Ctrl
+nmap <silent> t<C-n> :TestNearest<CR>
+nmap <silent> t<C-f> :TestFile<CR>
+nmap <silent> t<C-s> :TestSuite<CR>
+nmap <silent> t<C-l> :TestLast<CR>
+nmap <silent> t<C-g> :TestVisit<CR>
+
+" Allow using ctrl-j k l h to navigate between window splits
+map <C-h> <C-W>h
+map <C-j> <C-W>j
+map <C-k> <C-W>k
+map <C-l> <C-W>l 
